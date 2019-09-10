@@ -4,6 +4,16 @@ import math
 imgBird = cv2.imread('E:\\work2019\\Mar\\images\\DJI_0034.JPG',cv2.IMREAD_COLOR)
 imgTree = cv2.imread('E:\\work2019\\Mar\\images\\DJI_0034.JPG',cv2.IMREAD_COLOR)
 
+
+
+
+#LAB颜色分类与rgb颜色分类的转换
+# void RGB2Lab2(double R, double G, double B, double &L, double &a, double &b)
+# {
+#       L = 0.2126007 * R + 0.7151947 * G + 0.0722046 * B;
+#       a = 0.3258962 * R - 0.4992596 * G + 0.1733409 * B + 128;
+#       b = 0.1218128 * R + 0.3785610 * G - 0.5003738 * B + 128;
+# }
 # 假设我们已经用ps拾取了所保护鸟类的所有颜色，获取颜色种类为18，每种颜色放在一个集合
 # 鸟类的保护色命名为Pcolor1，Pcolor2，Pcolor3.....
 # 树的颜色命名为Tcolor1，Tcolor2，Tcolor3....
