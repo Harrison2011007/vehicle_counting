@@ -30,7 +30,7 @@ RGBarray = []
 # [r, g, b] = RGBpix[x, y]
 # rgb = [r, g, b]
 # print(rgb)
-demo = open('E:\\work2019\\Mar\\images\\rgb.txt','rw')
+demo = open('E:\\work2019\\Mar\\images\\rgb.txt','w')
 
 for x in range(Pwidth):
     for y in range(Pheight):
@@ -38,11 +38,8 @@ for x in range(Pwidth):
         rgb = [r,g,b]
         print(rgb)
         # RGBarray.append(rgb)
-        demo.write(str(rgb)+'\n')
+        demo.write(str(rgb))
 demo.close()
-
-demoLab = open('E:\\work2019\\Mar\\images\\rgb.txt','rw')
-
 # PSize = PSize.convert('RGB')
 
 
