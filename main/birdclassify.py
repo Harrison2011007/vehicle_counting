@@ -41,6 +41,8 @@ for x in range(Pwidth):
         demo.write(str(rgb)+'\n')
 demo.close()
 
+demoLab = open('E:\\work2019\\Mar\\images\\rgb.txt','rw')
+
 # PSize = PSize.convert('RGB')
 
 
