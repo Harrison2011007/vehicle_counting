@@ -4,14 +4,8 @@ import math
 from PIL import Image
 # imgBird = cv2.imread('E:\\work2019\\Mar\\images\\DJI_0034.JPG',cv2.IMREAD_COLOR)
 # imgTree = cv2.imread('E:\\work2019\\Mar\\images\\DJI_0034.JPG',cv2.IMREAD_COLOR)
-imgTree = Image.open('E:\\work2019\\Mar\\images\\1.jpg')
-#LAB颜色分类与rgb颜色分类的转换
-# void RGB2Lab2(double R, double G, double B, double &L, double &a, double &b)
-# {
-#       L = 0.2126007 * R + 0.7151947 * G + 0.0722046 * B;
-#       a = 0.3258962 * R - 0.4992596 * G + 0.1733409 * B + 128;
-#       b = 0.1218128 * R + 0.3785610 * G - 0.5003738 * B + 128;
-# }
+imgTree = Image.open('E:\\work2019\\Mar\\images\\111.jpg')
+
 # 假设我们已经用ps拾取了所保护鸟类的所有颜色，获取颜色种类为18，每种颜色放在一个集合
 # 鸟类的保护色命名为Pcolor1，Pcolor2，Pcolor3.....
 # 树的颜色命名为Tcolor1，Tcolor2，Tcolor3....
@@ -19,13 +13,12 @@ imgTree = Image.open('E:\\work2019\\Mar\\images\\1.jpg')
 
 
 RGBpix = imgTree.load()
-print(RGBpix)
+# print(RGBpix)
 # PSize = imgTree.shape
 # print(PSize)#获取图片尺寸
 Pheight = imgTree.size[0] #获取图片高度
 Pwidth = imgTree.size[1] #获取图片宽度
-print(Pheight)
-print(Pwidth)
+# print(Pwidth)
 RGBarray = []
 # [r, g, b] = RGBpix[x, y]
 # rgb = [r, g, b]
@@ -34,13 +27,47 @@ demo = open('E:\\work2019\\Mar\\images\\rgb.txt','w')
 
 for x in range(Pwidth):
     for y in range(Pheight):
-        [r, g, b] = RGBpix[x, y]
+        [r, g, b] = RGBpix[0,0]
         rgb = [r,g,b]
-        print(rgb)
-        # RGBarray.append(rgb)
-        demo.write(str(rgb))
+        # print(rgb)
+        #
+        RGBarray.append(rgb)
+demo.write(str(RGBarray))
+# print(RGBarray)
 demo.close()
 # PSize = PSize.convert('RGB')
+# demoLab = open('E:\\work2019\\Mar\\images\\rgb.txt','r')
+# for x in range(Pwidth):
+#     for y in range(Pheight):
+#         demoLab.read(rgb)
+#         print(rgb)
+#LAB颜色分类与rgb颜色分类的转换
+# void RGB2Lab2(double R, double G, double B, double &L, double &a, double &b)
+# {
+#       L = 0.2126007 * R + 0.7151947 * G + 0.0722046 * B;
+#       a = 0.3258962 * R - 0.4992596 * G + 0.1733409 * B + 128;
+#       b = 0.1218128 * R + 0.3785610 * G - 0.5003738 * B + 128;
+# }
+print(RGBarray[0][2])
+print(RGBarray[0])
+l = []
+a = []
+b = []
+for i in range(len(RGBarray)):
+    l = 0.2126007 * RGBarray[i][0] + 0.7151947 * RGBarray[i][1] + 0.0722046 * RGBarray[i][2]
+    a = 0.3258962 * RGBarray[i][0]  - 0.4992596 * RGBarray[i][1] + 0.1733409 * RGBarray[i][2] + 128
+    b = 0.1218128 * RGBarray[i][0] + 0.3785610 * RGBarray[i][1] - 0.5003738 * RGBarray[i][2] + 128
+    l = int(l)
+    a = int(a)
+    b = int(b)
+print(l)
+print(a)
+print(b)
+
+
+
+
+
 
 
 
@@ -67,5 +94,5 @@ demo.close()
 
 # cv2.imshow('imageBird',imgBird)
 # cv2.imshow('imageTree',imgTree)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
