@@ -54,7 +54,7 @@ for i in range(len(RGBarray)):
     l = int(l[i])
     a = int(a[i])
     b = int(b[i])
-# print(l1)
+print(l[1])
 
 
 
