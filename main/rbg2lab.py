@@ -1,5 +1,6 @@
 from PIL import Image
-
+import xlwt
+import pandas as pd
 # 读取图片并获取每个像素的rgb值
 imTree = Image.open('E:\\work2019\\Mar\\images\\car.jpg')
 pix = imTree.load()
@@ -41,15 +42,43 @@ for i in range(len(rgbarray)):
 # l = 0.2126007 * rgbarray[0][0] + 0.7151947 * rgbarray[0][1] + 0.0722046 * rgbarray[0][2]
 # a = 0.3258962 * rgbarray[0][0]  - 0.4992596 * rgbarray[0][1] + 0.1733409 * rgbarray[0][2] + 128
 # b = 0.1218128 * rgbarray[0][0] + 0.3785610 * rgbarray[0][1] - 0.5003738 * rgbarray[0][2] + 128
-print(l)
-print(a)
-print(b)
+# print(l)
+# print(a)
+# print(b)
 lab = []
 for i in range(len(l)):
     lab1 = l[i],a[i],b[i]#lab1是过渡值
     lab.append(lab1)
 # 打印出lab值
 print(lab)#rgb到lab值转换完毕
+
+count = 0
+# if (144,129,135) in lab:
+#     print(1)
+# for i in range(0,len(l-1)):
+#     if lab[i] == lab[i+1]:
+#         count = count+1
+# book = xlwt.Workbook('E:\\work2019\\Mar\\images\\1.xlsx')
+# sheet = book.add_sheet('sheet1')
+# for x in range(Twidth):
+#     for y in range(Theight):
+#         sheet.write(x,y,lab[i])
 #
+# book.save('E:\\work2019\\Mar\\images\\1.xlsx')
+# writer = pd.ExcelWriter('E:\\work2019\\Mar\\images\\1.xlsx')
+# for x in range(Twidth):
+#     for y in range(Theight):
+#         df1 = pd.DataFrame(data={'col1': [1, 1], 'col2': [2, 2]})
+#
+# df1.to_excel(writer,'Sheet1')
+# writer.save()
+# 写入到excel中
+Excel = xlwt.Workbook(encoding='utf-8', style_compression=0)
+table = Excel.add_sheet('hello',cell_overwrite_ok=True)  #sheet名命名为hello
+i = 0
+for x in range(Twidth):
+     for y in range(Theight):
+        table.write(x,y,str(lab[i]))#第一行第二列写入hello（row,col,data）
+        i = i+1
 
-
+Excel.save(r'E:\\work2019\\Mar\\images\\1.xls') #Excel表保存为world.xls
