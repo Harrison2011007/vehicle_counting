@@ -1,8 +1,9 @@
 from PIL import Image
 import xlwt
+import openpyxl
 import pandas as pd
 # 读取图片并获取每个像素的rgb值
-imTree = Image.open('E:\\work2019\\Mar\\images\\car.jpg')
+imTree = Image.open('E:\\work2019\\Mar\\images\\1.jpg')
 pix = imTree.load()
 Twidth = imTree.size[0]#获取图片宽度
 Theight = imTree.size[1]#获取图片长度
@@ -16,12 +17,12 @@ for x in range(Twidth):
         rgb = r,g,b
         rgbarray.append(rgb)
 # 打印试一下对不对
-print(rgbarray)
-print(rgbarray[0])
-print(rgbarray[0][0])
-print(rgbarray[0][1])
-print(rgbarray[0][2])
-print(len(rgbarray))
+# print(rgbarray)
+# print(rgbarray[0])
+# print(rgbarray[0][0])
+# print(rgbarray[0][1])
+# print(rgbarray[0][2])
+# print(len(rgbarray))
 # lab值的接收值
 l = []
 a = []
@@ -50,8 +51,12 @@ for i in range(len(l)):
     lab1 = l[i],a[i],b[i]#lab1是过渡值
     lab.append(lab1)
 # 打印出lab值
+print(len(l))
 print(lab)#rgb到lab值转换完毕
-
+d_lab = {}
+for i in range(len(l)):
+    d_lab[i] = lab[i]
+# print(d_lab)
 count = 0
 # if (144,129,135) in lab:
 #     print(1)
@@ -64,21 +69,14 @@ count = 0
 #     for y in range(Theight):
 #         sheet.write(x,y,lab[i])
 #
-# book.save('E:\\work2019\\Mar\\images\\1.xlsx')
-# writer = pd.ExcelWriter('E:\\work2019\\Mar\\images\\1.xlsx')
-# for x in range(Twidth):
-#     for y in range(Theight):
-#         df1 = pd.DataFrame(data={'col1': [1, 1], 'col2': [2, 2]})
-#
-# df1.to_excel(writer,'Sheet1')
-# writer.save()
-# 写入到excel中
-Excel = xlwt.Workbook(encoding='utf-8', style_compression=0)
-table = Excel.add_sheet('hello',cell_overwrite_ok=True)  #sheet名命名为hello
-i = 0
-for x in range(Twidth):
-     for y in range(Theight):
-        table.write(x,y,str(lab[i]))#第一行第二列写入hello（row,col,data）
-        i = i+1
 
-Excel.save(r'E:\\work2019\\Mar\\images\\1.xls') #Excel表保存为world.xls
+# 写入到excel中
+# Excel = xlwt.Workbook(encoding='utf-8', style_compression=0)
+# table = Excel.add_sheet('hello',cell_overwrite_ok=True)  #sheet名命名为hello
+# i = 0
+# for x in range(Twidth):
+#      for y in range(Theight):
+#         table.write(x,y,str(lab[i]))#写入到excel中write（row,col,data）
+#         i = i+1
+#
+# Excel.save(r'E:\\work2019\\Mar\\images\\1.xls') #Excel表保存为world.xls
