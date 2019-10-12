@@ -46,29 +46,32 @@ for i in range(len(rgbarray)):
 # print(l)
 # print(a)
 # print(b)
+
 lab = []
+lab2 = {}
 for i in range(len(l)):
     lab1 = l[i],a[i],b[i]#lab1是过渡值
     lab.append(lab1)
 # 打印出lab值
+print(lab)
 print(len(l))
-print(lab)#rgb到lab值转换完毕
-d_lab = {}
-for i in range(len(l)):
-    d_lab[i] = lab[i]
+lab_sorted = sorted(lab)
+# print(lab)#rgb到lab值转换完毕
+print(lab_sorted)
+
+# lst = list(set(lab_sorted))#过渡用的
+setlst = set(lab_sorted)
+# 将lab值存入到字典中
+# d_lab = dict()
 # print(d_lab)
-count = 0
-# if (144,129,135) in lab:
-#     print(1)
-# for i in range(0,len(l-1)):
-#     if lab[i] == lab[i+1]:
-#         count = count+1
-# book = xlwt.Workbook('E:\\work2019\\Mar\\images\\1.xlsx')
-# sheet = book.add_sheet('sheet1')
-# for x in range(Twidth):
-#     for y in range(Theight):
-#         sheet.write(x,y,lab[i])
-#
+print(setlst)
+print(len(setlst))
+# 写入到txt中
+demo = open('E:\\work2019\\Mar\\images\\1.txt','w')
+demo.write(str(lab))
+demo.close()
+
+
 
 # 写入到excel中
 # Excel = xlwt.Workbook(encoding='utf-8', style_compression=0)
