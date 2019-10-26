@@ -7,21 +7,22 @@ db = connect.cursor()
 sql = "SELECT update_tim FROM binhai_taxi_0903"
 db.execute(sql)
 result = db.fetchall()
-print(result[1])
-print(list(result[1]))
-lstresult = []
+# print(result[1])
+# print(list(result[1]))
+lstresult = []#用于将原来的数据变为list
 for i in range(len(result)):
-    # list(result[i])
     lstresult.append(list(result[i]))
     # print(result[i])
-# print(lstresult)
+# 将元素从列表中取出
+
+print(lstresult[1][0])
 demo = open('D:\\Program Files (x86)\\1.txt','w')
 demo.write(str(lstresult))
 demo.close()
 
 print ("Opened database successfully")
 
-timeStamp = 1567465822000
+timeStamp = int(lstresult[1][0])
 timeStamp1 = timeStamp/1000
 timeArray = time.localtime(timeStamp1)
 otherStyleTime = time.strftime("%Y/%m/%d %H:%M:%S", timeArray)
