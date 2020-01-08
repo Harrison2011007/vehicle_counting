@@ -27,3 +27,8 @@ timeStamp1 = timeStamp/1000
 timeArray = time.localtime(timeStamp1)
 otherStyleTime = time.strftime("%Y/%m/%d %H:%M:%S", timeArray)
 print (otherStyleTime)   # 2013--10--10 23:40:00
+connect = psycopg2.connect(database="postgres", user="postgres", password="123456", host="127.0.0.1", port="5432")
+db = connect.cursor()
+sql = "ALTER table binhai_taxi_0903 add standard_time_form TEXT"
+db.execute(sql)
+connect.commit()
